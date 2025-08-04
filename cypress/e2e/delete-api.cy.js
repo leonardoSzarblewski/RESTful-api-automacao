@@ -38,5 +38,19 @@ describe('Deletar dispositivos', () => {
         })
     })
 
-    
+    it('Não permite deletar dispositivos com ids reservados', () => {
+        const id_reservado = faker.number.int({ min: 1, max: 13 })
+
+        cy.request({
+            method: 'DELETE',
+            url: `https://api.restful-api.dev/objects/${id_reservado}`,
+            failOnStatusCode: false,
+
+        }).then((resp_delete) => {
+            expect(resp_delete.status).equal(405)
+            expect(resp_delete.body.error)
+                .equal(`${id_reservado} is a reserved id and the data object of it cannot be deleted. You can create your own new object via POST request and try to send a DELETE request with new generated object id.`)
+
+        })
+    })
 });
