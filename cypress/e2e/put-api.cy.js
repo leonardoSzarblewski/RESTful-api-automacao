@@ -13,7 +13,7 @@ describe('Alterar dispositivos', () => {
 
             cy.request({
                 method: 'PUT',
-                url: `https://api.restful-api.dev/objects/${resp_post.body.id}`,
+                url: `/objects/${resp_post.body.id}`,
                 failOnStatusCode: false,
                 body: {
                     "name": "Celular do Matheus",
