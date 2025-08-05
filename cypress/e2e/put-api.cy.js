@@ -1,10 +1,18 @@
 describe('Alterar dispositivos', () => {
 
     it('Alterar um dispositivo', () => {
+        const body = {
+            "name": "Celular do leo",
+            "data": {
+                "year": 2025,
+                "price": 1000,
+                "CPU model": "Intel Core i9",
+                "Hard disk size": "1 TB",
+                "owner": "Leonardo Szarblewski"
+            }
+        }
 
-        cy.cadastra_dispositivo().as('postDevice')
-
-        cy.get('@postDevice').then((resp_post) => {
+        cy.cadastraDispositivo(body).then((resp_post) => {
             expect(resp_post.status).equal(200)
             expect(resp_post.body.name).equal('Celular do leo')
             expect(resp_post.body.data.owner).equal('Leonardo Szarblewski')

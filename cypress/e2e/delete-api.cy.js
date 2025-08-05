@@ -3,9 +3,18 @@ import { faker } from '@faker-js/faker';
 describe('Deletar dispositivos', () => {
 
     it('Deleta um dispositivo', () => {
-        cy.cadastra_dispositivo().as('postDevice')
+        const body = {
+            "name": "Celular do leo",
+            "data": {
+                "year": 2025,
+                "price": 1000,
+                "CPU model": "Intel Core i9",
+                "Hard disk size": "1 TB",
+                "owner": "Leonardo Szarblewski"
+            }
+        }
 
-        cy.get('@postDevice').then((resp_post) => {
+        cy.cadastraDispositivo(body).then((resp_post) => {
             expect(resp_post.status).equal(200)
 
             cy.request({

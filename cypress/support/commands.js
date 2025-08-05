@@ -1,29 +1,19 @@
-import { faker } from '@faker-js/faker';
-
-Cypress.Commands.add('cadastraDispositivo', () => {
+Cypress.Commands.add('cadastraDispositivo', (payload) => {
     cy.request({
         method: 'POST',
-        url: 'https://api.restful-api.dev/objects',
+        url: '/objects',
         failOnStatusCode: false,
-        body: {
-            "name": "Celular do leo",
-            "data": {
-                "year": 2025,
-                "price": 1000,
-                "CPU model": "Intel Core i9",
-                "Hard disk size": "1 TB",
-                "owner": "Leonardo Szarblewski"
-            }
-        }
+        body: payload 
+
     })
 })
 
 Cypress.Commands.add('buscaDispositivo', (get_id) => {
     cy.request({
-            method: 'GET',
-            url: `/objects/${get_id}`,   
-            failOnStatusCode: false
+        method: 'GET',
+        url: `/objects/${get_id}`,
+        failOnStatusCode: false
 
-        }).then((response) => { return response })
+    }).then((response) => { return response })
 })
 
