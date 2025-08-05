@@ -1,4 +1,6 @@
-Cypress.Commands.add('cadastra_dispositivo', () => {
+import { faker } from '@faker-js/faker';
+
+Cypress.Commands.add('cadastraDispositivo', () => {
     cy.request({
         method: 'POST',
         url: 'https://api.restful-api.dev/objects',
@@ -14,5 +16,14 @@ Cypress.Commands.add('cadastra_dispositivo', () => {
             }
         }
     })
-
 })
+
+Cypress.Commands.add('buscaDispositivo', (get_id) => {
+    cy.request({
+            method: 'GET',
+            url: `/objects/${get_id}`,   
+            failOnStatusCode: false
+
+        }).then((response) => { return response })
+})
+
