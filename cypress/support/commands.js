@@ -14,6 +14,16 @@ Cypress.Commands.add('buscaDispositivo', (get_id) => {
         url: `/objects/${get_id}`,
         failOnStatusCode: false
 
-    }).then((response) => { return response })
+    })
 })
+
+Cypress.Commands.add('deletaDispositivo', (delete_id) => {
+    cy.request({
+        method: 'DELETE',
+        url: `/objects/${delete_id}`,
+        failOnStatusCode: false
+
+    })
+})
+
 
