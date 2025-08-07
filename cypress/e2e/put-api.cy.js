@@ -1,6 +1,6 @@
 describe('Alterar dispositivos', () => {
 
-    it('Alterar um dispositivo', () => {
+    it('Altera um dispositivo', () => {
         const body = {
             "name": "Celular do leo",
             "data": {
@@ -18,7 +18,6 @@ describe('Alterar dispositivos', () => {
             expect(resp_post.body.data.owner).equal('Leonardo Szarblewski')
             expect(resp_post.body.data.price).equal(1000)
             
-
             cy.request({
                 method: 'PUT',
                 url: `/objects/${resp_post.body.id}`,
