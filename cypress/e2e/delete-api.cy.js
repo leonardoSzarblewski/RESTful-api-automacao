@@ -2,18 +2,8 @@ import { faker } from '@faker-js/faker';
 
 describe('Deletar dispositivos', () => {
 
+    const body = require('../fixtures/cadastraDevice.json')
     it('Deleta um dispositivo', () => {
-        const body = {
-            "name": "Celular do leo",
-            "data": {
-                "year": 2025,
-                "price": 1000,
-                "CPU model": "Intel Core i9",
-                "Hard disk size": "1 TB",
-                "owner": "Leonardo Szarblewski"
-            }
-        }
-
         cy.cadastraDispositivo(body).then((resp_post) => {
             expect(resp_post.status).equal(200)
 
